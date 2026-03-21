@@ -90,7 +90,7 @@ fig, ax = plt.subplots()
 ax.bar(labels, values)
 ax.set_ylabel("€/t steel")
 ax.set_title("CBAM cost under different electricity sourcing")
-
+st.write(values)
 st.pyplot(fig)
 
 # =========================
