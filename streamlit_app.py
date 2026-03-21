@@ -8,8 +8,19 @@ st.title("CBAM Cost Comparison Model")
 # =========================
 st.sidebar.header("Input parameters")
 
-scope1 = st.sidebar.slider("Scope 1 emissions (tCO2/t)", 0.0, 3.0, 0.7)
-electricity = st.sidebar.slider("Electricity consumption (kWh/t)", 100, 800, 400)
+# EAF share
+w_eaf = st.slider("EAF share", 0.0, 1.0, 0.3)
+
+# Technology-specific parameters
+s1_eaf = 0.68
+s1_bf = 2.34
+
+e_eaf = 400   # kWh per tonne of steel
+e_bf = 80
+
+# Weighted average based on technology mix
+scope1 = w_eaf * s1_eaf + (1 - w_eaf) * s1_bf
+electricity = w_eaf * e_eaf + (1 - w_eaf) * e_bf
 
 # Electricity sourcing
 st.sidebar.subheader("Electricity emission factors")
