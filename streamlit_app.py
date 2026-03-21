@@ -9,7 +9,7 @@ st.title("CBAM Cost Comparison Model")
 st.sidebar.header("Input parameters")
 
 # EAF share
-w_eaf = st.slider("EAF share", 0.0, 1.0, 0.3)
+w_eaf = st.sidebar.slider("EAF share", 0.0, 1.0, 0.3)
 
 # Technology-specific parameters
 s1_eaf = 0.68
