@@ -80,17 +80,24 @@ labels = [
 ]
 
 values = [
-    cbam_current_grid,
-    cbam_extended_grid,
-    cbam_current_renew,
-    cbam_extended_renew
+    round(cbam_current_grid, 2),
+    round(cbam_extended_grid, 2),
+    round(cbam_current_renew, 2),
+    round(cbam_extended_renew, 2)
 ]
 
 fig, ax = plt.subplots()
 ax.bar(labels, values)
 ax.set_ylabel("€/t steel")
 ax.set_title("CBAM cost under different electricity sourcing")
-st.write(values)
+
+st.write("### CBAM values (€ / t steel)")
+
+labels = ["Grid-Current", "Grid-Extended", "Renew-Current", "Renew-Extended"]
+
+for l, v in zip(labels, values):
+    st.write(f"{l}: {v:.2f}")
+    
 st.pyplot(fig)
 
 # =========================
