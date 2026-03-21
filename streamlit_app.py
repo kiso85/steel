@@ -1,8 +1,5 @@
 import streamlit as st
 import matplotlib.pyplot as plt
-import pandas as pd
-
-
 
 st.title("CBAM Cost Comparison Model")
 
@@ -93,13 +90,6 @@ fig, ax = plt.subplots()
 ax.bar(labels, values)
 ax.set_ylabel("€/t steel")
 ax.set_title("CBAM cost under different electricity sourcing")
-
-df = pd.DataFrame({
-    "Scenario": ["Grid-Current", "Grid-Extended", "Renew-Current", "Renew-Extended"],
-    "CBAM cost (€/t)": values
-})
-
-st.table(df)
     
 st.pyplot(fig)
 
