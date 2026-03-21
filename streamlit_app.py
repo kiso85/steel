@@ -24,7 +24,7 @@ price_cn = st.sidebar.slider("China carbon price (€/t)", 0, 100, 30)
 # CBAM parameters
 st.sidebar.subheader("CBAM parameters")
 benchmark = st.sidebar.slider("Benchmark (tCO2/t)", 0.0, 2.5, 1.3)
-cf = st.sidebar.slider("Correction factor", 0.0, 1.0, 0.8)
+cf = st.sidebar.slider("CBAM factor", 0.0, 1.0, 0.8)
 
 # =========================
 # Calculations
