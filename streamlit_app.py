@@ -39,12 +39,12 @@ ee_grid = scope1 + scope2_grid
 ee_renew = scope1 + scope2_renew
 
 # Current CBAM (Scope 1 only)
-cbam_current_grid = max(scope1 - benchmark * cf, 0) * (price_eu - price_cn)
+cbam_current_grid = (scope1 - benchmark * cf) * (price_eu - price_cn)
 cbam_current_renew = cbam_current_grid  # same value
 
 # Extended CBAM (Scope 1 + Scope 2)
-cbam_extended_grid = max(ee_grid - benchmark * cf, 0) * (price_eu - price_cn)
-cbam_extended_renew = max(ee_renew - benchmark * cf, 0) * (price_eu - price_cn)
+cbam_extended_grid = (ee_grid - benchmark * cf) * (price_eu - price_cn)
+cbam_extended_renew = (ee_renew - benchmark * cf) * (price_eu - price_cn)
 
 # =========================
 # Results display
