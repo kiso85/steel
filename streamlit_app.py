@@ -98,7 +98,7 @@ values = [
 ]
 
 fig, ax = plt.subplots()
-colors = ["#B0C4DE", "#2F4F4F", "#B2DF8A", "#33A02C"]
+colors = ["#9ecae1", "#3182bd", "#a1d99b", "#31a354"]
 ax.bar(labels, values, color=colors)
 ax.set_ylabel("€/t steel")
 ax.set_title("CBAM cost under different electricity sourcing")
