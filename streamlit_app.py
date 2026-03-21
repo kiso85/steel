@@ -9,7 +9,7 @@ st.title("CBAM Cost Comparison Model")
 st.sidebar.header("Input parameters")
 
 # EAF share
-w_eaf = st.sidebar.slider("EAF share", 0.0, 1.0, 0.3)
+w_eaf = st.sidebar.slider("EAF share", 0.0, 1.0, 1.0)
 
 # Technology-specific parameters
 s1_eaf = 0.68
@@ -29,13 +29,13 @@ ef_renew = st.sidebar.slider("Renewable emission factor (tCO2/MWh)", 0.0, 0.2, 0
 
 # Carbon prices
 st.sidebar.subheader("Carbon prices")
-price_eu = st.sidebar.slider("EU carbon price (€/t)", 50, 200, 120)
+price_eu = st.sidebar.slider("EU carbon price (€/t)", 50, 200, 150)
 price_cn = st.sidebar.slider("China carbon price (€/t)", 0, 100, 30)
 
 # CBAM parameters
 st.sidebar.subheader("CBAM parameters")
 benchmark = st.sidebar.slider("Benchmark (tCO2/t)", 0.0, 2.5, 1.3)
-cf = st.sidebar.slider("CBAM factor", 0.0, 1.0, 0.8)
+cf = st.sidebar.slider("CBAM factor", 0.0, 1.0, 0)
 
 # =========================
 # Calculations
