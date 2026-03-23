@@ -1,7 +1,7 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 
-st.title("CBAM Cost Comparison Model")
+st.title("EAF-Based CBAM Cost Comparison Model")
 
 # =========================
 # Sidebar inputs
