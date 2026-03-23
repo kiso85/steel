@@ -60,7 +60,7 @@ cbam_extended_renew = (ee_renew - benchmark * cf) * (price_eu - price_cn)
 # =========================
 # Results display
 # =========================
-st.subheader("CBAM comparison")
+st.subheader("Electricity sourcing scenarios")
 
 col1, col2 = st.columns(2)
 
