@@ -66,6 +66,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.write("### Grid electricity")
+    st.metric("Scope 1", round(s1_eaf, 2))
     st.metric("Scope 2", round(scope2_grid, 2))
     st.metric("Embedded emissions", round(ee_grid, 2))
     st.metric("Current CBAM", round(cbam_current_grid, 2))
@@ -73,6 +74,7 @@ with col1:
 
 with col2:
     st.write("### Renewable electricity")
+    st.metric("Scope 1", round(s1_eaf, 2))
     st.metric("Scope 2", round(scope2_renew, 2))
     st.metric("Embedded emissions", round(ee_renew, 2))
     st.metric("Current CBAM", round(cbam_current_renew, 2))
