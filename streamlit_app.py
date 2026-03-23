@@ -12,8 +12,8 @@ st.sidebar.header("Input parameters")
 w_eaf = st.sidebar.slider("EAF share", 0.0, 1.0, 1.0)
 
 # Technology-specific parameters
-s1_eaf = 0.68
-s1_bf = 2.34
+s1_eaf = 0.18
+s1_bf = 2.20
 
 e_eaf = 400   # kWh per tonne of steel
 e_bf = 80
@@ -24,13 +24,13 @@ electricity = w_eaf * e_eaf + (1 - w_eaf) * e_bf
 
 # Electricity sourcing
 st.sidebar.subheader("Electricity emission factors")
-ef_grid = st.sidebar.slider("Grid emission factor (tCO2/MWh)", 0.4, 1.0, 0.6)
-ef_renew = st.sidebar.slider("Renewable emission factor (tCO2/MWh)", 0.0, 0.2, 0.05)
+ef_grid = st.sidebar.slider("Grid emission factor (tCO2/MWh)", 0.4, 1.0, 0.8)
+ef_renew = st.sidebar.slider("Renewable emission factor (tCO2/MWh)", 0.0, 0.05, 0.0)
 
 # Carbon prices
 st.sidebar.subheader("Carbon prices")
 price_eu = st.sidebar.slider("EU carbon price (€/t)", 50, 200, 150)
-price_cn = st.sidebar.slider("China carbon price (€/t)", 0, 100, 30)
+price_cn = st.sidebar.slider("China carbon price (€/t)", 0, 100, 32)
 
 # CBAM parameters
 st.sidebar.subheader("CBAM parameters")
