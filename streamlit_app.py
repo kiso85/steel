@@ -111,51 +111,34 @@ ax.set_title("CBAM cost under different electricity sourcing")
     
 st.pyplot(fig)
 # =========================
-# Total cost (NEW)
+# Plot: CBAM cost (EAF only)
 # =========================
+st.subheader("CBAM Cost under EAF Production")
 
-# Electricity cost
-elec_cost_grid = electricity / 1000 * price_grid
-elec_cost_renew = electricity / 1000 * price_renew
+labels = [
+    "Grid - Current",
+    "Grid - Extended",
+    "Renewable - Current",
+    "Renewable - Extended"
+]
 
-# Total cost (use EXTENDED CBAM)
-total_grid = cbam_extended_grid + elec_cost_grid
-total_renew = cbam_extended_renew + elec_cost_renew
-
-# =========================
-# Plot: Total cost (STACKED, English)
-# =========================
-st.subheader("Total Cost Comparison (Including Electricity)")
-
-labels_total = ["Grid Electricity", "Renewable Electricity"]
-
-# Components
-cbam_parts = [
+values = [
+    round(cbam_current_grid, 2),
     round(cbam_extended_grid, 2),
+    round(cbam_current_renew, 2),
     round(cbam_extended_renew, 2)
 ]
 
-elec_parts = [
-    round(elec_cost_grid, 2),
-    round(elec_cost_renew, 2)
-]
+fig, ax = plt.subplots()
 
-fig2, ax2 = plt.subplots()
+colors = ["#9ecae1", "#3182bd", "#a1d99b", "#31a354"]
 
-# CBAM part
-ax2.bar(labels_total, cbam_parts, label="CBAM Cost")
+ax.bar(labels, values, color=colors)
 
-# Electricity part (stacked)
-ax2.bar(labels_total, elec_parts, bottom=cbam_parts, label="Electricity Cost")
+ax.set_ylabel("CBAM Cost (€/t steel)")
+ax.set_title("CBAM Cost Comparison under EAF: Current vs Extended Framework")
 
-# Labels
-ax2.set_ylabel("Cost (€/t steel)")
-ax2.set_title("Total Cost Breakdown: CBAM vs Electricity")
-
-# Legend
-ax2.legend()
-
-st.pyplot(fig2)
+st.pyplot(fig)
 # =========================
 # Insight
 # =========================
