@@ -123,8 +123,8 @@ st.subheader("Total Cost under EAF: Current vs Extended CBAM")
 labels = [
     "Grid - Current",
     "Grid - Extended",
-    "Renewable - Current",
-    "Renewable - Extended"
+    "Renew - Current",
+    "Renew - Extended"
 ]
 
 # CBAM components
