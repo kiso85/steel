@@ -147,7 +147,7 @@ st.write(
 # Electricity cost (ADD THIS)
 # =========================
 price_renew_effective = max(
-    (price_renew - (1 - alpha-0.2) * price_sell) / alpha,
+    (price_renew - min(1-alpha,0.2) * price_sell) / alpha,
     0
 )
 elec_cost_grid = electricity / 1000 * price_grid
