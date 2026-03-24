@@ -113,7 +113,11 @@ st.pyplot(fig)
 # =========================
 # Plot: Total Cost (EAF, Stacked, 4 Scenarios)
 # =========================
-
+# =========================
+# Electricity cost (ADD THIS)
+# =========================
+elec_cost_grid = electricity / 1000 * price_grid
+elec_cost_renew = electricity / 1000 * price_renew
 st.subheader("Total Cost under EAF: Current vs Extended CBAM")
 
 labels = [
