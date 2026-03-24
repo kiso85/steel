@@ -146,33 +146,26 @@ price_renew_effective = max(
 elec_cost_grid = electricity / 1000 * price_grid
 elec_cost_renew = electricity / 1000 * price_renew_effective
 # =========================
-# Plot: Electricity Cost Only (EAF, 4 scenarios)
+# Plot: Electricity Cost Only (EAF)
 # =========================
 
-st.subheader("Electricity Cost under EAF: Grid vs Renewable")
+st.subheader("Electricity Cost Comparison under EAF")
 
 labels = [
-    "Grid - Current",
-    "Grid - Extended",
-    "Renew - Current",
-    "Renew - Extended"
+    "Grid Electricity",
+    "Renewable Electricity"
 ]
 
-# Electricity cost only
-electricity_parts = [
+values = [
     round(elec_cost_grid, 2),
-    round(elec_cost_grid, 2),
-    round(elec_cost_renew, 2),
     round(elec_cost_renew, 2)
 ]
 
 fig, ax = plt.subplots()
 
-# Single layer bar
-ax.bar(labels, electricity_parts, color=["#9ecae1", "#3182bd", "#a1d99b", "#31a354"])
+ax.bar(labels, values, color=["#3182bd", "#31a354"])
 
-# Labels and title
 ax.set_ylabel("Electricity Cost (€/t steel)")
-ax.set_title("Electricity Cost Comparison under EAF")
+ax.set_title("Electricity Cost by Source")
 
 st.pyplot(fig)
