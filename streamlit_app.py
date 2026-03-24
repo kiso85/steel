@@ -1,7 +1,7 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
-st.title("EAF-Based CBAM Cost Comparison Model")
+st.title("EAF-Based CBAM and Electricity Cost Model")
 
 # =========================
 # Sidebar inputs
@@ -156,7 +156,7 @@ elec_cost_renew = electricity / 1000 * price_renew_effective
 # Plot: Electricity Cost Only (EAF)
 # =========================
 
-st.subheader("Electricity Cost Comparison under EAF")
+st.subheader("Electricity cost comparison")
 
 labels = [
     "Grid Electricity",
