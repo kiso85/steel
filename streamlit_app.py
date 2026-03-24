@@ -123,21 +123,37 @@ total_grid = cbam_extended_grid + elec_cost_grid
 total_renew = cbam_extended_renew + elec_cost_renew
 
 # =========================
-# Plot: Total cost
+# Plot: Total cost (STACKED, English)
 # =========================
-st.subheader("Total cost comparison (including electricity)")
+st.subheader("Total Cost Comparison (Including Electricity)")
 
-labels_total = ["Grid Total", "Renewable Total"]
+labels_total = ["Grid Electricity", "Renewable Electricity"]
 
-values_total = [
-    round(total_grid, 2),
-    round(total_renew, 2)
+# Components
+cbam_parts = [
+    round(cbam_extended_grid, 2),
+    round(cbam_extended_renew, 2)
+]
+
+elec_parts = [
+    round(elec_cost_grid, 2),
+    round(elec_cost_renew, 2)
 ]
 
 fig2, ax2 = plt.subplots()
-ax2.bar(labels_total, values_total)
-ax2.set_ylabel("€/t steel")
-ax2.set_title("Total cost (CBAM + electricity)")
+
+# CBAM part
+ax2.bar(labels_total, cbam_parts, label="CBAM Cost")
+
+# Electricity part (stacked)
+ax2.bar(labels_total, elec_parts, bottom=cbam_parts, label="Electricity Cost")
+
+# Labels
+ax2.set_ylabel("Cost (€/t steel)")
+ax2.set_title("Total Cost Breakdown: CBAM vs Electricity")
+
+# Legend
+ax2.legend()
 
 st.pyplot(fig2)
 # =========================
