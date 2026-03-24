@@ -51,7 +51,7 @@ st.sidebar.subheader("Renewable electricity assumptions")
 
 alpha = st.sidebar.slider(
     "Self-consumption ratio",
-    0.0, 1.0, 0.7
+    0.6, 1.0, 0.7
 )
 
 price_sell = st.sidebar.slider(
@@ -143,7 +143,7 @@ st.write(
 # Electricity cost (ADD THIS)
 # =========================
 price_renew_effective = max(
-    (price_renew - (1 - alpha) * price_sell) / alpha,
+    (price_renew - (1 - alpha-0.2) * price_sell) / alpha,
     0
 )
 elec_cost_grid = electricity / 1000 * price_grid
