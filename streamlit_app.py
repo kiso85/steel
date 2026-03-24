@@ -135,9 +135,7 @@ st.write(
     f"Switching from grid to renewable electricity reduces extended CBAM cost by **{round(diff,2)} €/t steel**."
 )
 
-# =========================
-# Plot: Total Cost (EAF, Stacked, 4 Scenarios)
-# =========================
+
 # =========================
 # Electricity cost (ADD THIS)
 # =========================
@@ -147,7 +145,11 @@ price_renew_effective = max(
 )
 elec_cost_grid = electricity / 1000 * price_grid
 elec_cost_renew = electricity / 1000 * price_renew_effective
-st.subheader("Total Cost under EAF: Current vs Extended CBAM")
+# =========================
+# Plot: Electricity Cost Only (EAF, 4 scenarios)
+# =========================
+
+st.subheader("Electricity Cost under EAF: Grid vs Renewable")
 
 labels = [
     "Grid - Current",
@@ -156,15 +158,7 @@ labels = [
     "Renew - Extended"
 ]
 
-# CBAM components
-cbam_parts = [
-    round(cbam_current_grid, 2),
-    round(cbam_extended_grid, 2),
-    round(cbam_current_renew, 2),
-    round(cbam_extended_renew, 2)
-]
-
-# Electricity cost (same for current and extended)
+# Electricity cost only
 electricity_parts = [
     round(elec_cost_grid, 2),
     round(elec_cost_grid, 2),
@@ -174,22 +168,11 @@ electricity_parts = [
 
 fig, ax = plt.subplots()
 
-# Bottom layer: CBAM
-ax.bar(labels, cbam_parts, label="CBAM Cost")
-
-# Top layer: Electricity (stacked)
-ax.bar(labels, electricity_parts, bottom=cbam_parts, label="Electricity Cost")
+# Single layer bar
+ax.bar(labels, electricity_parts, color=["#9ecae1", "#3182bd", "#a1d99b", "#31a354"])
 
 # Labels and title
-ax.set_ylabel("Cost (€/t steel)")
-ax.set_title("Total Cost Breakdown under EAF: Current vs Extended CBAM")
-
-# Legend
-ax.legend()
+ax.set_ylabel("Electricity Cost (€/t steel)")
+ax.set_title("Electricity Cost Comparison under EAF")
 
 st.pyplot(fig)
-
-st.metric(
-    "Effective renewable price (€/MWh)",
-    round(price_renew_effective, 2)
-)
