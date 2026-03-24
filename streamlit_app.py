@@ -15,7 +15,10 @@ w_eaf = st.sidebar.slider("EAF share", 0.0, 1.0, 1.0)
 s1_eaf = 0.18
 s1_bf = 2.20
 
-e_eaf = 400   # kWh per tonne of steel
+e_eaf = st.sidebar.slider(
+    "EAF electricity consumption (kWh/t steel)",
+    300, 600, 400
+)
 e_bf = 80
 
 # Weighted average based on technology mix
