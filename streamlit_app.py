@@ -141,8 +141,10 @@ st.write(
 # =========================
 # Electricity cost (ADD THIS)
 # =========================
-
-price_renew_effective = alpha * price_renew + (1 - alpha) * price_sell
+price_renew_effective = max(
+    (price_renew - (1 - alpha) * price_sell) / alpha,
+    0
+)
 elec_cost_grid = electricity / 1000 * price_grid
 elec_cost_renew = electricity / 1000 * price_renew_effective
 st.subheader("Total Cost under EAF: Current vs Extended CBAM")
