@@ -166,7 +166,7 @@ values = [
 
 fig, ax = plt.subplots()
 x = np.array([0, 0.8])   
-width = 0.6
+width = 0.3
 fig, ax = plt.subplots()
 ax.bar(x, values, width=width, color=["#3182bd", "#31a354"])
 
