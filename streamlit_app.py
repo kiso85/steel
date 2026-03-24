@@ -176,3 +176,15 @@ ax.set_ylabel("Electricity Cost (€/t steel)")
 ax.set_title("Electricity Cost by Source")
 
 st.pyplot(fig)
+# =========================
+# Key insight: cost savings
+# =========================
+
+savings = elec_cost_grid - elec_cost_renew
+
+st.subheader("Key Insight")
+
+if savings > 0:
+    st.write(f"Renewable electricity saves **{round(savings,2)} €/t steel** compared to grid electricity.")
+else:
+    st.write(f"Renewable electricity costs **{round(-savings,2)} €/t steel more** than grid electricity.")
