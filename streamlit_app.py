@@ -1,6 +1,6 @@
 import streamlit as st
 import matplotlib.pyplot as plt
-
+import numpy as np
 st.title("EAF-Based CBAM Cost Comparison Model")
 
 # =========================
@@ -165,9 +165,13 @@ values = [
 ]
 
 fig, ax = plt.subplots()
-width = 0.4
-ax.bar(labels, values, width=width, color=["#3182bd", "#31a354"])
+x = np.array([0, 0.6])   
+width = 0.3
+fig, ax = plt.subplots()
+ax.bar(x, values, width=width, color=["#3182bd", "#31a354"])
 
+ax.set_xticks(x)
+ax.set_xticklabels(labels)
 ax.set_ylabel("Electricity Cost (€/t steel)")
 ax.set_title("Electricity Cost by Source")
 
