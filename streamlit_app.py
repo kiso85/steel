@@ -162,7 +162,7 @@ values = [
 ]
 
 fig, ax = plt.subplots()
-
+width = 0.6
 ax.bar(labels, values, color=["#3182bd", "#31a354"])
 
 ax.set_ylabel("Electricity Cost (€/t steel)")
