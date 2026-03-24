@@ -42,6 +42,20 @@ price_grid = st.sidebar.slider("Grid price (€/MWh)", 40, 120, 70)
 price_renew = st.sidebar.slider("Renewable price (€/MWh)", 20, 100, 55)
 
 # =========================
+# Renewable electricity assumptions
+# =========================
+st.sidebar.subheader("Renewable electricity assumptions")
+
+alpha = st.sidebar.slider(
+    "Self-consumption ratio",
+    0.0, 1.0, 0.7
+)
+
+price_sell = st.sidebar.slider(
+    "Export electricity price (€/MWh)",
+    0, 100, 40
+)
+# =========================
 # Calculations
 # =========================
 
@@ -111,13 +125,26 @@ ax.set_title("CBAM cost under different electricity sourcing")
     
 st.pyplot(fig)
 # =========================
+# Insight
+# =========================
+st.subheader("Key insight")
+
+diff = cbam_extended_grid - cbam_extended_renew
+
+st.write(
+    f"Switching from grid to renewable electricity reduces extended CBAM cost by **{round(diff,2)} €/t steel**."
+)
+
+# =========================
 # Plot: Total Cost (EAF, Stacked, 4 Scenarios)
 # =========================
 # =========================
 # Electricity cost (ADD THIS)
 # =========================
+
+price_renew_effective = alpha * price_renew + (1 - alpha) * price_sell
 elec_cost_grid = electricity / 1000 * price_grid
-elec_cost_renew = electricity / 1000 * price_renew
+elec_cost_renew = electricity / 1000 * price_renew_effective
 st.subheader("Total Cost under EAF: Current vs Extended CBAM")
 
 labels = [
@@ -159,13 +186,8 @@ ax.set_title("Total Cost Breakdown under EAF: Current vs Extended CBAM")
 ax.legend()
 
 st.pyplot(fig)
-# =========================
-# Insight
-# =========================
-st.subheader("Key insight")
 
-diff = cbam_extended_grid - cbam_extended_renew
-
-st.write(
-    f"Switching from grid to renewable electricity reduces extended CBAM cost by **{round(diff,2)} €/t steel**."
+st.metric(
+    "Effective renewable price (€/MWh)",
+    round(price_renew_effective, 2)
 )
