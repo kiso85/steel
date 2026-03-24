@@ -42,7 +42,7 @@ cf = st.sidebar.slider("CBAM factor", 0.0, 1.0, 0.0)
 
 st.sidebar.subheader("Electricity price")
 price_grid = st.sidebar.slider("Grid price (€/MWh)", 40, 120, 70)
-price_renew = st.sidebar.slider("Renewable price (€/MWh)", 20, 100, 55)
+price_renew = st.sidebar.slider("Renewable LCOE (€/MWh)", 20, 100, 55)
 
 # =========================
 # Renewable electricity assumptions
