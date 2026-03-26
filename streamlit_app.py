@@ -28,7 +28,7 @@ e_bf = 50
 
 # Electricity sourcing
 st.sidebar.subheader("Electricity emission factors")
-ef_grid = st.sidebar.slider("Grid emission factor (tCO2/MWh)", 0.4, 1.0, 0.9)
+ef_grid = st.sidebar.slider("Grid emission factor (tCO2/MWh)", 0.4, 1.0, 1.0)
 ef_renew = st.sidebar.slider("Renewable emission factor (tCO2/MWh)", 0.0, 0.05, 0.02)
 
 # Carbon prices
