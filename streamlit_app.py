@@ -12,7 +12,7 @@ st.sidebar.header("Input parameters")
 # Technology-specific parameters
 s1_eaf = 0.12
 s1_bf = 2.20
-
+scope1_eaf_val = s1_eaf
 e_eaf = st.sidebar.slider(
     "EAF electricity consumption (kWh/t steel)",
     300, 600, 400
@@ -94,7 +94,7 @@ with col1:
 # 🔵 EAF Grid
 with col2:
     st.write("### EAF (Grid)")
-    st.metric("Scope 1", f"{scope1_eaf_val:.2f} tCO₂/t steel")
+    st.metric("Scope 1", f"{scope1_eaf:.2f} tCO₂/t steel")
     st.metric("Scope 2", f"{scope2_eaf_grid:.2f} tCO₂/t steel")
     st.metric("Embedded emissions", f"{ee_eaf_grid:.2f} tCO₂/t steel")
     st.metric("Current CBAM", f"{cbam_eaf_grid_current:.2f} €/t steel")
@@ -103,7 +103,7 @@ with col2:
 # 🟢 EAF Renewable
 with col3:
     st.write("### EAF (Renewable)")
-    st.metric("Scope 1", f"{scope1_eaf_val:.2f} tCO₂/t steel")
+    st.metric("Scope 1", f"{scope1_eaf:.2f} tCO₂/t steel")
     st.metric("Scope 2", f"{scope2_eaf_renew:.2f} tCO₂/t steel")
     st.metric("Embedded emissions", f"{ee_eaf_renew:.2f} tCO₂/t steel")
     st.metric("Current CBAM", f"{cbam_eaf_renew_current:.2f} €/t steel")
