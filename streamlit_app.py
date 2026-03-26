@@ -186,7 +186,14 @@ values = [
 ]
 
 fig, ax = plt.subplots()
-ax.bar(labels, values, color=["#3182bd", "#31a354"])
+
+x = np.arange(len(labels))
+width = 0.4   
+
+ax.bar(x, values, width=width, color=["#3182bd", "#31a354"])
+
+ax.set_xticks(x)
+ax.set_xticklabels(labels)
 
 ax.set_ylabel("€/t steel")
 ax.set_title("Electricity Cost (EAF)")
