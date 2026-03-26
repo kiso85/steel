@@ -17,7 +17,7 @@ st.title("CBAM Cost Comparison Model (BF vs EAF)")
 st.sidebar.header("Input parameters")
 
 # Technology-specific parameters
-s1_eaf = 0.18
+s1_eaf = 0.22
 s1_bf = 2.30
 
 e_eaf = st.sidebar.slider(
@@ -28,7 +28,7 @@ e_bf = 50
 
 # Electricity sourcing
 st.sidebar.subheader("Electricity emission factors")
-ef_grid = st.sidebar.slider("Grid emission factor (tCO2/MWh)", 0.4, 1.0, 1.0)
+ef_grid = st.sidebar.slider("Grid emission factor (tCO2/MWh)", 0.4, 1.0, 0.8)
 ef_renew = st.sidebar.slider("Renewable emission factor (tCO2/MWh)", 0.0, 0.05, 0.02)
 
 # Carbon prices
