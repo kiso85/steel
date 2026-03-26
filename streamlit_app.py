@@ -2,7 +2,10 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
 st.title("EAF-Based CBAM and Electricity Cost Model")
-
+st.markdown(f"""
+**Scope 1**  
+{s1_eaf:.2f} <span style='font-size:12px'>tCO₂/t steel</span>
+""", unsafe_allow_html=True)
 # =========================
 # Sidebar inputs
 # =========================
