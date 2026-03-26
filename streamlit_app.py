@@ -18,8 +18,8 @@ st.sidebar.header("Input parameters")
 
 # Technology-specific parameters
 s1_eaf = 0.12
-s1_bf = 2.20
-scope1_eaf_val = s1_eaf
+s1_bf = 2.18
+
 e_eaf = st.sidebar.slider(
     "EAF electricity consumption (kWh/t steel)",
     300, 600, 400
