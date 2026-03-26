@@ -78,6 +78,38 @@ cbam_eaf_grid_extended = (ee_eaf_grid - benchmark * cf) * (price_eu - price_cn)
 cbam_eaf_renew_extended = (ee_eaf_renew - benchmark * cf) * (price_eu - price_cn)
 
 # =========================
+st.subheader("Technology and electricity scenarios")
+
+col1, col2, col3 = st.columns(3)
+
+# 🔴 BF-BOF baseline
+with col1:
+    st.write("### BF-BOF (Grid)")
+    st.metric("Scope 1", f"{scope1_bf:.2f} tCO₂/t steel")
+    st.metric("Scope 2", f"{scope2_bf:.2f} tCO₂/t steel")
+    st.metric("Embedded emissions", f"{ee_bf:.2f} tCO₂/t steel")
+    st.metric("Current CBAM", f"{cbam_bf_current:.2f} €/t steel")
+    st.metric("Extended CBAM", f"{cbam_bf_current:.2f} €/t steel")  # 可选（或删掉）
+
+# 🔵 EAF Grid
+with col2:
+    st.write("### EAF (Grid)")
+    st.metric("Scope 1", f"{scope1_eaf_val:.2f} tCO₂/t steel")
+    st.metric("Scope 2", f"{scope2_eaf_grid:.2f} tCO₂/t steel")
+    st.metric("Embedded emissions", f"{ee_eaf_grid:.2f} tCO₂/t steel")
+    st.metric("Current CBAM", f"{cbam_eaf_grid_current:.2f} €/t steel")
+    st.metric("Extended CBAM", f"{cbam_eaf_grid_extended:.2f} €/t steel")
+
+# 🟢 EAF Renewable
+with col3:
+    st.write("### EAF (Renewable)")
+    st.metric("Scope 1", f"{scope1_eaf_val:.2f} tCO₂/t steel")
+    st.metric("Scope 2", f"{scope2_eaf_renew:.2f} tCO₂/t steel")
+    st.metric("Embedded emissions", f"{ee_eaf_renew:.2f} tCO₂/t steel")
+    st.metric("Current CBAM", f"{cbam_eaf_renew_current:.2f} €/t steel")
+    st.metric("Extended CBAM", f"{cbam_eaf_renew_extended:.2f} €/t steel")
+    
+# =========================
 # Plot 1: Current CBAM
 # =========================
 st.subheader("CBAM (Current) comparison")
