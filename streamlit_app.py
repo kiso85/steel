@@ -2,10 +2,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
 st.title("EAF-Based CBAM and Electricity Cost Model")
-st.markdown(f"""
-**Scope 1**  
-{s1_eaf:.2f} <span style='font-size:12px'>tCO₂/t steel</span>
-""", unsafe_allow_html=True)
+
 # =========================
 # Sidebar inputs
 # =========================
@@ -94,19 +91,19 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.write("### Grid electricity")
-    st.metric("Scope 1", f"{s1_eaf:.2f} <span style='font-size:12px'>tCO₂/t steel</span>", unsafe_allow_html=True)
-    st.metric("Scope 2", f"{scope2_grid:.2f} <span style='font-size:12px'>tCO₂/t steel</span>", unsafe_allow_html=True)
-    st.metric("Embedded emissions", f"{ee_grid:.2f} <span style='font-size:12px'>tCO₂/t steel</span>", unsafe_allow_html=True)
-    st.metric("Current CBAM", f"{cbam_current_grid:.2f} <span style='font-size:12px'>€/t steel</span>", unsafe_allow_html=True)
-    st.metric("Extended CBAM", f"{cbam_extended_grid:.2f} <span style='font-size:12px'>€/t steel</span>", unsafe_allow_html=True)
+    st.metric("Scope 1", f"{s1_eaf:.2f} tCO₂/t steel")
+    st.metric("Scope 2", f"{scope2_grid:.2f} tCO₂/t steel")
+    st.metric("Embedded emissions", f"{ee_grid:.2f} tCO₂/t steel")
+    st.metric("Current CBAM", f"{cbam_current_grid:.2f} €/t steel")
+    st.metric("Extended CBAM", f"{cbam_extended_grid:.2f} €/t steel")
 
 with col2:
     st.write("### Renewable electricity")
-    st.metric("Scope 1", f"{s1_eaf:.2f} <span style='font-size:12px'>tCO₂/t steel</span>", unsafe_allow_html=True)
-    st.metric("Scope 2", f"{scope2_renew:.2f} <span style='font-size:12px'>tCO₂/t steel</span>", unsafe_allow_html=True)
-    st.metric("Embedded emissions", f"{ee_renew:.2f} <span style='font-size:12px'>tCO₂/t steel</span>", unsafe_allow_html=True)
-    st.metric("Current CBAM", f"{cbam_current_renew:.2f} <span style='font-size:12px'>€/t steel</span>", unsafe_allow_html=True)
-    st.metric("Extended CBAM", f"{cbam_extended_renew:.2f} <span style='font-size:12px'>€/t steel</span>", unsafe_allow_html=True)
+    st.metric("Scope 1", f"{s1_eaf:.2f} tCO₂/t steel")
+    st.metric("Scope 2", f"{scope2_renew:.2f} tCO₂/t steel")
+    st.metric("Embedded emissions", f"{ee_renew:.2f} tCO₂/t steel")
+    st.metric("Current CBAM", f"{cbam_current_renew:.2f} €/t steel")
+    st.metric("Extended CBAM", f"{cbam_extended_renew:.2f} €/t steel")
 
 # =========================
 # Plot
