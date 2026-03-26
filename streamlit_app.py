@@ -22,7 +22,7 @@ s1_bf = 2.30
 
 e_eaf = st.sidebar.slider(
     "EAF electricity consumption (kWh/t steel)",
-    300, 600, 500
+    300, 600, 575
 )
 e_bf = 50
 
