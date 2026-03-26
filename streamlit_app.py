@@ -12,7 +12,7 @@ st.sidebar.header("Input parameters")
 w_eaf = st.sidebar.slider("EAF share", 0.0, 1.0, 1.0)
 
 # Technology-specific parameters
-s1_eaf = 0.18
+s1_eaf = 0.12
 s1_bf = 2.20
 
 e_eaf = st.sidebar.slider(
@@ -91,19 +91,19 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.write("### Grid electricity")
-    st.metric("Scope 1", f"{s1_eaf:.2f} tCO₂/t steel")
-    st.metric("Scope 2", f"{scope2_grid:.2f} tCO₂/t steel")
-    st.metric("Embedded emissions", f"{ee_grid:.2f} tCO₂/t steel")
-    st.metric("Current CBAM", f"{cbam_current_grid:.2f} €/t steel")
-    st.metric("Extended CBAM", f"{cbam_extended_grid:.2f} €/t steel")
+    st.metric("Scope 1", f"{s1_eaf:.2f} <span style='font-size:12px'>tCO₂/t steel</span>", unsafe_allow_html=True)
+    st.metric("Scope 2", f"{scope2_grid:.2f} <span style='font-size:12px'>tCO₂/t steel</span>", unsafe_allow_html=True)
+    st.metric("Embedded emissions", f"{ee_grid:.2f} <span style='font-size:12px'>tCO₂/t steel</span>", unsafe_allow_html=True)
+    st.metric("Current CBAM", f"{cbam_current_grid:.2f} <span style='font-size:12px'>€/t steel</span>", unsafe_allow_html=True)
+    st.metric("Extended CBAM", f"{cbam_extended_grid:.2f} <span style='font-size:12px'>€/t steel</span>", unsafe_allow_html=True)
 
 with col2:
     st.write("### Renewable electricity")
-    st.metric("Scope 1", f"{s1_eaf:.2f} tCO₂/t steel")
-    st.metric("Scope 2", f"{scope2_renew:.2f} tCO₂/t steel")
-    st.metric("Embedded emissions", f"{ee_renew:.2f} tCO₂/t steel")
-    st.metric("Current CBAM", f"{cbam_current_renew:.2f} €/t steel")
-    st.metric("Extended CBAM", f"{cbam_extended_renew:.2f} €/t steel")
+    st.metric("Scope 1", f"{s1_eaf:.2f} <span style='font-size:12px'>tCO₂/t steel</span>", unsafe_allow_html=True)
+    st.metric("Scope 2", f"{scope2_renew:.2f} <span style='font-size:12px'>tCO₂/t steel</span>", unsafe_allow_html=True)
+    st.metric("Embedded emissions", f"{ee_renew:.2f} <span style='font-size:12px'>tCO₂/t steel</span>", unsafe_allow_html=True)
+    st.metric("Current CBAM", f"{cbam_current_renew:.2f} <span style='font-size:12px'>€/t steel</span>", unsafe_allow_html=True)
+    st.metric("Extended CBAM", f"{cbam_extended_renew:.2f} <span style='font-size:12px'>€/t steel</span>", unsafe_allow_html=True)
 
 # =========================
 # Plot
