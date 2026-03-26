@@ -2,6 +2,13 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
 
+st.markdown("""
+<style>
+[data-testid="stMetricValue"] {
+    font-size: 20px;
+}
+</style>
+""", unsafe_allow_html=True)
 st.title("CBAM Cost Comparison Model (BF vs EAF)")
 
 # =========================
