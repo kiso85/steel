@@ -160,19 +160,41 @@ with col3:
     st.metric("Total cost (extended)", f"{total_eaf_renew_ext:.1f} €/t")
 
 # =========================
-# Helper: grouped bar chart via Plotly
 # =========================
-def grouped_bar(title, categories, series, ylabel="€/t steel"):
+# Colour palette — matches Figure 5.2 exactly
+#   BF-BOF   : dark blue  / light blue
+#   EAF grid : dark red   / light red
+#   EAF renew: dark green / light green
+# =========================
+C_BF_DARK   = "#2171b5"
+C_BF_LIGHT  = "#9ecae1"
+C_GRID_DARK = "#cb4b19"
+C_GRID_LIGHT= "#f4a582"
+C_RENEW_DARK = "#238b45"
+C_RENEW_LIGHT= "#a1d99b"
+
+SCENARIOS   = ["BF-BOF (Grid)", "EAF (Grid)", "EAF (Renewable)"]
+DARK_COLORS = [C_BF_DARK,  C_GRID_DARK,  C_RENEW_DARK]
+LIGHT_COLORS= [C_BF_LIGHT, C_GRID_LIGHT, C_RENEW_LIGHT]
+
+def make_chart(title, current_vals, extended_vals=None, ylabel="€/t steel"):
+    """Two-trace grouped bar (current = dark, extended = light) or single-trace."""
     fig = go.Figure()
-    colors = {"Current": "#5b9bd5", "Extended": "#ed7d31",
-              "BF-BOF": "#9ecae1", "EAF (Grid)": "#3182bd", "EAF (Renewable)": "#31a354",
-              "Electricity": "#6baed6"}
-    for name, vals in series:
+    fig.add_trace(go.Bar(
+        name="Current framework",
+        x=SCENARIOS,
+        y=[max(v, 0) for v in current_vals],
+        marker_color=DARK_COLORS,
+        marker_line_width=0,
+    ))
+    if extended_vals is not None:
         fig.add_trace(go.Bar(
-            name=name,
-            x=categories,
-            y=[max(v, 0) for v in vals],
-            marker_color=colors.get(name, "#aaaaaa"),
+            name="Extended framework",
+            x=SCENARIOS,
+            y=[max(v, 0) for v in extended_vals],
+            marker_color=LIGHT_COLORS,
+            marker_line_color=DARK_COLORS,
+            marker_line_width=1.2,
         ))
     fig.update_layout(
         title=title,
@@ -191,10 +213,9 @@ def grouped_bar(title, categories, series, ylabel="€/t steel"):
 # Plot 1: CBAM — current framework
 # =========================
 st.subheader("CBAM (Current framework)")
-fig1 = grouped_bar(
+fig1 = make_chart(
     f"CBAM cost — current framework ({year})",
-    categories=["BF-BOF (Grid)", "EAF (Grid)", "EAF (Renewable)"],
-    series=[("Current", [cbam_bf_cur, cbam_eaf_grid_cur, cbam_eaf_renew_cur])],
+    current_vals=[cbam_bf_cur, cbam_eaf_grid_cur, cbam_eaf_renew_cur],
 )
 st.plotly_chart(fig1, use_container_width=True)
 
@@ -202,13 +223,10 @@ st.plotly_chart(fig1, use_container_width=True)
 # Plot 2: CBAM — current vs extended
 # =========================
 st.subheader("CBAM: Current vs Extended framework")
-fig2 = grouped_bar(
+fig2 = make_chart(
     f"CBAM cost — current vs extended framework ({year})",
-    categories=["BF-BOF (Grid)", "EAF (Grid)", "EAF (Renewable)"],
-    series=[
-        ("Current", [cbam_bf_cur,  cbam_eaf_grid_cur,  cbam_eaf_renew_cur]),
-        ("Extended",[cbam_bf_ext,  cbam_eaf_grid_ext,  cbam_eaf_renew_ext]),
-    ],
+    current_vals= [cbam_bf_cur,  cbam_eaf_grid_cur,  cbam_eaf_renew_cur],
+    extended_vals=[cbam_bf_ext,  cbam_eaf_grid_ext,  cbam_eaf_renew_ext],
 )
 st.plotly_chart(fig2, use_container_width=True)
 
@@ -216,10 +234,9 @@ st.plotly_chart(fig2, use_container_width=True)
 # Plot 3: Electricity cost
 # =========================
 st.subheader("Electricity cost")
-fig3 = grouped_bar(
+fig3 = make_chart(
     f"Electricity cost component ({year})",
-    categories=["BF-BOF (Grid)", "EAF (Grid)", "EAF (Renewable)"],
-    series=[("Electricity", [elec_bf, elec_eaf_grid, elec_eaf_renew])],
+    current_vals=[elec_bf, elec_eaf_grid, elec_eaf_renew],
 )
 st.plotly_chart(fig3, use_container_width=True)
 
@@ -227,15 +244,13 @@ st.plotly_chart(fig3, use_container_width=True)
 # Plot 4: Total cost — current vs extended
 # =========================
 st.subheader("Total Cost (production + CBAM)")
-fig4 = grouped_bar(
+fig4 = make_chart(
     f"Total cost — current vs extended framework ({year})",
-    categories=["BF-BOF (Grid)", "EAF (Grid)", "EAF (Renewable)"],
-    series=[
-        ("Current", [total_bf_cur,  total_eaf_grid_cur,  total_eaf_renew_cur]),
-        ("Extended",[total_bf_ext,  total_eaf_grid_ext,  total_eaf_renew_ext]),
-    ],
+    current_vals= [total_bf_cur,  total_eaf_grid_cur,  total_eaf_renew_cur],
+    extended_vals=[total_bf_ext,  total_eaf_grid_ext,  total_eaf_renew_ext],
 )
 st.plotly_chart(fig4, use_container_width=True)
+
 
 # =========================
 # Key insights
