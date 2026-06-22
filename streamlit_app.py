@@ -45,7 +45,7 @@ e_eaf  = st.sidebar.slider("EAF electricity consumption (kWh/t steel)", 300, 600
 
 # Emission factors
 st.sidebar.subheader("Electricity emission factors")
-ef_grid  = st.sidebar.slider("Grid emission factor (tCO2/MWh)", 0.4, 0.8, 0.8)
+ef_grid  = st.sidebar.slider("Grid emission factor (tCO2/MWh)", 0.4, 0.8, 0.55)
 ef_renew = st.sidebar.slider("Renewable emission factor (tCO2/MWh)", 0.0, 0.05, 0.02)
 
 # CBAM parameters
