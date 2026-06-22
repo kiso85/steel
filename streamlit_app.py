@@ -54,8 +54,8 @@ benchmark = st.sidebar.slider("Benchmark (tCO2/t)", 0.0, 2.5, 1.328)
 
 # Electricity prices
 st.sidebar.subheader("Electricity prices")
-price_grid  = st.sidebar.slider("Grid price (€/MWh)", 40, 120, 70)
-lcoe_renew  = st.sidebar.slider("Renewable LCOE (€/MWh generated)", 25, 35, 30)
+price_grid  = st.sidebar.slider("Grid price (€/MWh)", 40, 120, 75)
+lcoe_renew  = st.sidebar.slider("Renewable LCOE (€/MWh generated)", 20, 45, 30)
 extra_cost  = st.sidebar.slider("Additional system cost (€/MWh self-consumed)", 35, 65, 42)
 
 # Renewable assumptions
